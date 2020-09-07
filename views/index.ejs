@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>asda</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Free Software/Coding Academy</title>
+    <%- include('components/style') %>
   </head>
+
   <body>
-    <h1>asda</h1>
-    <p>Welcome to asda</p>
+    <%- include('components/nav', { session: session }) %>
+
+    <div data-overlay class="o-hidden">
+      <section class="mb-5">
+        <div class="container">
+          <div class="row justify-content-center text-center min-vh-40 d-flex flex-column align-items-center">
+            <div class="col-md-10 col-lg-9 col-xl-8" data-aos="fade-up">
+              <h1 class="display-3"><br>Building <mark>Industry Revolution 4.0</mark>, NOW!</h1>
+              <p class="lead px-xl-5">Real game-changers will be anticipation and adaptation to new trends, technologies – and having the confidence to explore your potential.</p>
+              <div class="d-flex flex-column flex-sm-row mt-4 mt-md-5 justify-content-center" data-aos="fade-up" data-aos-delay="300">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <%- include('components/footer') %>
+
+    <%- include('components/script') %>
+
   </body>
+
 </html>

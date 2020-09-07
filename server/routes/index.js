@@ -9,7 +9,12 @@ module.exports = function(app) {
 
     // Only load files that aren't directories and aren't blacklisted
     if (!fs.lstatSync(__dirname + '/' + file).isDirectory() && !_.includes(excluded, file)) {
-      app.use('/' + basename, require('./' + file));
+
+      if (basename !== 'main') {
+        app.use('/' + basename, require('./' + file));
+      } else {
+        app.use('/', require('./' + file));
+      }
     }
   });
 };

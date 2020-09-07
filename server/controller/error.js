@@ -1,5 +1,6 @@
 
 export default {
+    // functions
     index (req, res) {
         res.render('error', {
             message: 'boom',

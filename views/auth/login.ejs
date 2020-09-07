@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Free Software/Coding Academy</title>
+    <%- include('../components/style') %>
+  </head>
+
+  <body>
+
+    <section class="row no-gutters p-0 bg-light min-vh-100">
+        <div class="col-lg-6 d-none d-lg-block order-lg-2">
+          <img class="flex-fill" src="assets/img/sign-up.jpg" alt="Image">
+        </div>
+        <div class="col-lg-6">
+          <section class="p-0 bg-gradient text-white">
+            <div class="container min-vh-lg-100 d-flex flex-column justify-content-between text-center py-4 py-md-5">
+              <a href="index.html" class="fade-page">
+                <img src="/assets/img/logos/jumpstart.svg" alt="Jumpstart" data-inject-svg class="bg-white">
+              </a>
+              <div class="row justify-content-center my-5">
+                <div class="col-xl-7 col-lg-8">
+                  <h1 class="h2 text-center mb-lg-5">Sign In</h1>
+                  <div class="card card-body shadow text-left text-dark">
+                    <form action='/auth/login' method="POST">
+                      <div class="form-group">
+                        <input type="email" class="form-control" name="sign-up-email" placeholder="Email Address">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" name="sign-up-password" placeholder="Password">
+                        <div class="text-right text-small mt-2">
+                          <a href="">Forgot Password?</a>
+                        </div>
+                      </div>
+                      <button class="btn btn-primary btn-block" type="submit">Sign In</button>
+                    </form>
+                  </div>
+                  <div class="text-center text-small mt-3">
+                    Don't have an account? <a class="text-white" href="account-sign-up-cover.html">Sign up here</a>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <a href="index.html" class="btn btn-sm btn-light fade-page">Back to Overview</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+    <%- include('../components/script') %>
+
+  </body>
+
+</html>

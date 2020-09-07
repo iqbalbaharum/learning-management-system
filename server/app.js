@@ -3,8 +3,15 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import session from 'express-session'
 
 var app = express();
+
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
+}));
 
 require('./routes') (app)
 

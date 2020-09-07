@@ -1,0 +1,55 @@
+<div class="navbar-container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand navbar-brand-dynamic-color fade-page" href="index.html">
+          <img alt="Krenovator" width="210" height="36" src="/assets/img/logos/krenovator.png">
+        </a>
+        <div class="d-flex align-items-center order-lg-3">
+            <% if(!session.isLoggedIn) { %>
+            <a href="/auth/login" class="btn btn-primary ml-lg-4 mr-3 mr-md-4 mr-lg-0 d-none d-sm-block order-lg-3">Login</a>
+            <% } else { %>
+            <a href="/auth/logout" class="btn btn-primary ml-lg-4 mr-3 mr-md-4 mr-lg-0 d-none d-sm-block order-lg-3">Logout</a>
+            <% } %>
+          <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+            <img alt="Navbar Toggler Open Icon" class="navbar-toggler-open icon icon-sm" data-inject-svg src="/assets/img/icons/interface/icon-menu.svg">
+            <img alt="Navbar Toggler Close Icon" class="navbar-toggler-close icon icon-sm" data-inject-svg src="/assets/img/icons/interface/icon-x.svg">
+          </button>
+        </div>
+        <div class="collapse navbar-collapse order-3 order-lg-2 justify-content-lg-end" id="navigation-menu">
+          <ul class="navbar-nav my-3 my-lg-0">
+            <li class="nav-item">
+              <div class="dropdown">
+                <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle nav-link nav-item arrow-bottom" data-toggle="dropdown-grid" href="#" role="button">School</a>
+                <div class="row dropdown-menu">
+                  <div class="col-auto" data-dropdown-content>
+                    <div class="dropdown-grid-menu">
+                      <a href="videos.html" class="dropdown-item fade-page"><span class="title">Browse all education</span> <div class="submenu">Get the skills you need to get to your goals in the tech industry by choosing one of our classes</div></a>
+                      <a href="tech-accelerator/index.html" class="dropdown-item fade-page"><span class="title">Tech Skill Accelerator</span>
+                        <div class="submenu">Accelerated tech skilling learning program to gain portfolio</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle nav-link nav-item arrow-bottom" data-toggle="dropdown-grid" href="#" role="button">Business</a>
+                <div class="row dropdown-menu">
+                  <div class="col-auto" data-dropdown-content>
+                    <div class="dropdown-grid-menu">
+                      <a href="krenofication.html" class="dropdown-item fade-page"><span class="title">Krenofication</span> <div class="submenu">Do you need developers? - we've got you covered</div></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>

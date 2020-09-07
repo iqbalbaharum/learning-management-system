@@ -1,0 +1,29 @@
+
+.col-auto {
+    width: 280px;
+}
+
+.dropdown-item {
+    margin-bottom: 10px;
+}
+
+.dropdown-item .title {
+    border-bottom: 1px solid #28a745;
+    color: black;
+}
+
+.dropdown-item .submenu {
+    font-weight: normal;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.module {
+    padding:10px;
+}
+
+.module:hover {
+    background-color: #f5efdf;
+    border-radius: 5px;
+}

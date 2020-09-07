@@ -3,5 +3,5 @@ import errorController  from '../controller/error'
 
 Router.route('/')
     .get(errorController.index)
-
+    
 module.exports = Router
