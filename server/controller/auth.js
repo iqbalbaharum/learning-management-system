@@ -18,5 +18,9 @@ export default {
     logout (req, res) {
         req.session.isLoggedIn = false
         res.redirect('/')
+    },
+
+    register (req, res) {
+        res.render('auth/signup')
     }
 }

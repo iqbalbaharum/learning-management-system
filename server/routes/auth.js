@@ -7,5 +7,8 @@ Router.route('/login')
 
 Router.route('/logout')
     .get(authController.logout)
-    
+
+Router.route('/register')
+    .get(authController.register)
+
 module.exports = Router

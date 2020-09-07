@@ -23,8 +23,8 @@
                 <div class="row dropdown-menu">
                   <div class="col-auto" data-dropdown-content>
                     <div class="dropdown-grid-menu">
-                      <a href="videos.html" class="dropdown-item fade-page"><span class="title">Browse all education</span> <div class="submenu">Get the skills you need to get to your goals in the tech industry by choosing one of our classes</div></a>
-                      <a href="tech-accelerator/index.html" class="dropdown-item fade-page"><span class="title">Tech Skill Accelerator</span>
+                      <a href="" class="dropdown-item fade-page"><span class="title">Browse all education</span> <div class="submenu">Get the skills you need to get to your goals in the tech industry by choosing one of our classes</div></a>
+                      <a href="" class="dropdown-item fade-page"><span class="title">Tech Skill Accelerator</span>
                         <div class="submenu">Accelerated tech skilling learning program to gain portfolio</div>
                       </a>
                     </div>
@@ -44,6 +44,21 @@
                 </div>
               </div>
             </li>
+            
+            <% if(session.isLoggedIn) { %>
+            <li class="nav-item">
+              <div class="dropdown">
+                <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle nav-link nav-item arrow-bottom" data-toggle="dropdown-grid" href="#" role="button">Learning</a>
+                <div class="row dropdown-menu">
+                  <div class="col-auto" data-dropdown-content>
+                    <div class="dropdown-grid-menu">
+                      <a href="/journal" class="dropdown-item fade-page"><span class="title">Journal</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <% } %>
 
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
