@@ -1,8 +1,7 @@
 const Router = require('express').Router()
+import errorController  from '../controller/error'
 
 Router.route('/')
-    .get((req, res) => {
-        res.render('error')
-    })
+    .get(errorController.index)
 
 module.exports = Router

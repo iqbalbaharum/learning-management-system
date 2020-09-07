@@ -1,8 +1,8 @@
 const Router = require('express').Router()
 
+import mainController  from '../controller/main'
+
 Router.route('/')
-    .get((req, res) => {
-        res.render('index')
-    })
+    .get(mainController.index)
 
 module.exports = Router
