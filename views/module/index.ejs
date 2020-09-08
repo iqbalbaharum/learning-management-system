@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Free Software/Coding Academy</title>
+    <%- include('../components/style') %>
+  </head>
+
+  <body>
+    <%- include('../components/nav', { session: session }) %>
+
+    <section>
+      <div class="container">
+				<div class="row mb-5">
+					<a href="" class="btn btn-dark" data-toggle="modal" data-target="#newModule">New Module</a>
+				</div>
+        <div class="row">
+          <% for(var i = 0; i < modules.length; i++ ) { %>
+          <div class="col-md-6 col-lg-4 mb-3 mb-md-4">
+            <div class="card h-100 hover-box-shadow">
+              <div class="card-body" button type="button" data-toggle="modal" data-target="#newContent">
+                <div>
+                  <p><%= modules[i].course %></p>
+                  <p><%= modules[i].title %></p>
+                  <p><%= modules[i].author %></p>
+                </div>
+              </button>
+              </div>
+              <div class="card-footer d-flex justify-content-between align-items-center">
+                <div class="gutter">
+									<a href="#" class="mr-2">Update</a>
+									<a href="/module/delete/<%= modules[i].id %>">Delete</a>
+								</div>
+                <div class="text-small text-muted"><%= modules[i].createdAt %></div>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </section>
+    
+    <div class="modal fade" id="newModule" tabindex="-1" aria-labelledby="newModuleLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newModuleLabel">Module Entry</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/module" method="POST">
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Course</label>
+                <input class="form-control" name="course"/>
+              </div>
+              <div class="form-group">
+                <label>Title</label>
+                <input class="form-control" name="title"/>
+              </div>
+              <div class="form-group">
+                <label>Author</label>
+                <input class="form-control" name="author"/>
+              </div>
+              <div class="form-group">
+                <label>Content</label>
+                <textarea class="form-control" rows="3" name="content"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+ 
+    <div class="modal fade" id="newContent" tabindex="-1" role="dialog" aria-labelledby="newContentTitle" aria-hidden="true">
+      <% for(var i = 0; i < modules.length; i++ ) { %>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newContentTitle"><p><%= modules[i].title %></p></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><%= modules[i].title %></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+
+		
+    <%- include('../components/footer') %>
+    <%- include('../components/script') %>
+
+  </body>
+
+</html>
