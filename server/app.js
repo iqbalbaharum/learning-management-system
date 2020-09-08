@@ -4,6 +4,9 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import session from 'express-session'
+import bodyParser from 'body-parser'
+
+import Models from "./models"
 
 var app = express();
 
@@ -13,7 +16,12 @@ app.use(session({
   resave: true
 }));
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 require('./routes') (app)
+
+// start database
+Models.sequelize.sync();
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
