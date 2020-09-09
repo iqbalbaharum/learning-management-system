@@ -33,7 +33,21 @@ development: {
     }
 ```
 
-## Run
+## Installation
+```javascript
+npm ci
+```
+
+If you having problem with the above method, 
+
+1. **Delete** `node_modules` folder
+2. [package-lock.json](https://github.com/iqbalbaharum/learning-management-system/blob/master/package-lock.json)
+3. Run command below
+```javascript
+npm install
+```
+
+## Run App
 ```javascript
 npm run watch:dev
 ```
