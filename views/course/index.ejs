@@ -7,6 +7,14 @@
 
   <body>
     <%- include('../components/nav', { session: session }) %>
+    <div class="container">
+
+        <% if (session.isLoggedIn == true) { %>
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCourse">Course Registration</button>
+          </div>
+        <% } %>
+    </div>
 
     <section>
       <div class="container">
@@ -19,51 +27,80 @@
               <div class="row align-items-center">
                 <div class="col">
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Degree Level</li>
+                    <li class="list-group-item">DEGREE LEVEL</li>
                 </div>
                 <div class="col">
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Class Type</li>
+                    <li class="list-group-item">CLASS TYPE</li>
                 </div>
                 <div class="col">
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Faculty</li>
+                    <li class="list-group-item">FACULTY</li>
                 </div>
                 <div class="col">
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">View</li>
+                    <li class="list-group-item">VIEW</li>
                 </div>
 
                 <% for(var x=0; x < course.length; x++ ){ %>
                     <tr>
                         <td><%= course[i].title%></td>
                         <td><%= course[i].content%> </td>
+                        <td><%= course[i].faculty%> </td>
                         <td><a href="/course" class="mr-2">Update</a></td>
                         <td><a href="/course" class="mr-2">Edit</a></td>
                             <a href="/course/delete/ <%= course[i].id %>"<Delete</a>
                     </tr>
                <% } %>
               </div>
+        </div>
 
 
+      </div>
+    </div>
+    </section>
 
+    <div class="modal fade" id="newCourse" tabindex="-1" aria-labelledby="newCourseLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newCourseLabel">Course Registration</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/course" method="POST">
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Degree Level</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Class Type</label>
+                <input class="form-control" name="title"/>
+              </div>
+              <div class="form-group">
+                <label>Faculty</label>
+                <input class="form-control" name="title"/>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
 
 
 
-    </section>
-
-    <div class="container">
-      <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">Save changes</button>
-      </div>
-    </div>
 
 
 
-
+    <%- include('../components/footer') %>
+    <%- include('../components/script') %>
   </body>
 
 </html>
