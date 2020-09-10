@@ -9,39 +9,56 @@
     <%- include('../components/nav', { session: session }) %>
 
     <section>
-      <div class="card" style="width: 18rem;">
-        <div class="card-header">
-          Featured
+      <div class="container">
+        <div class="row align-items-start">
+          <div class="card" style="width: 100rem;">
+              <div class="card-header">
+                COURSE REGISTRATION PERIOD
+              </div>
+
+              <div class="row align-items-center">
+                <div class="col">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Degree Level</li>
+                </div>
+                <div class="col">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Class Type</li>
+                </div>
+                <div class="col">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Faculty</li>
+                </div>
+                <div class="col">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">View</li>
+                </div>
+
+                <% for(var x=0; x < course.length; x++ ){ %>
+                    <tr>
+                        <td><%= course[i].title%></td>
+                        <td><%= course[i].content%> </td>
+                        <td><a href="/course" class="mr-2">Update</a></td>
+                        <td><a href="/course" class="mr-2">Edit</a></td>
+                            <a href="/course/delete/ <%= course[i].id %>"<Delete</a>
+                    </tr>
+               <% } %>
+              </div>
+
+
+
         </div>
-        <div class="row row-cols-1 row-cols-md-3">
-          <% for(var x=0; x < course.length; x++ ){ %>
-              <div class="col mb-4">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Degree Level</li>
-                  <li class="list-group-item">Class Type</li>
-                  <li class="list-group-item">Faculty</li>
-                  <li class="list-group-item">View</li>
-
-                  <tr>
-                    <td><%= course[i].title%></td>
-                    <td><%= course[i].content%> </td>
-                    <td><a href="/course" class="mr-2">Update</a></td>
-                    <td><a href="/course" class="mr-2">Edit</a></td>
-                      <a href="/course/delete/ <%= course[i].id %>"<Delete</a>
-                  </tr>
-                  <% } %>
-                </ul>
-             </div>
-        </div>
-
-
       </div>
+    </div>
+
 
 
     </section>
 
-    <div class="modal-footer">
-      <button class="btn btn-primary" type="submit">Save changes</button>
+    <div class="container">
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Save changes</button>
+      </div>
     </div>
 
 
