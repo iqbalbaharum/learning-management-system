@@ -13,24 +13,30 @@
         <div class="card-header">
           Featured
         </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Degree Level</li>
-              <li class="list-group-item">Class Type</li>
-              <li class="list-group-item">Faculty</li>
-              <li class="list-group-item">View</li>
-            </ul>
+        <div class="row row-cols-1 row-cols-md-3">
+          <% for(var x=0; x < course.length; x++ ){ %>
+              <div class="col mb-4">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Degree Level</li>
+                  <li class="list-group-item">Class Type</li>
+                  <li class="list-group-item">Faculty</li>
+                  <li class="list-group-item">View</li>
 
-
-            <% for(var i=0, i< course.length; i++){ %>
-              <tr>
-                <td><%= course[x].title%></td>
-                <td><%= course[i].content%> </td>
-                <td><a href="/course" class="mr-2">Update</a></td>
-                <td><a href="/course" class="mr-2">Edit</a></td>
-                  <a href="/course/delete/ <%= course[i].id %>">Delete</a></td>
-              </tr>
-            <% } %>
+                  <tr>
+                    <td><%= course[i].title%></td>
+                    <td><%= course[i].content%> </td>
+                    <td><a href="/course" class="mr-2">Update</a></td>
+                    <td><a href="/course" class="mr-2">Edit</a></td>
+                      <a href="/course/delete/ <%= course[i].id %>"<Delete</a>
+                  </tr>
+                  <% } %>
+                </ul>
+             </div>
         </div>
+
+
+      </div>
+
 
     </section>
 
