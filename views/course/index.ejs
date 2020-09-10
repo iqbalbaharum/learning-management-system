@@ -11,19 +11,37 @@
     <section>
       <div class="card" style="width: 18rem;">
         <div class="card-header">
-          <th style ="width:20%;">Course</th>
-          <th style ="width:20%;">Topic</th>
-          <th style ="width:20%;">Content</th>
-          <th style ="width:20%;">Edit & Delete</th>
-
+          Featured
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+          <li class="list-group-item">Course</li>
+          <li class="list-group-item">Topic</li>
+          <li class="list-group-item">Content</li>
+          <li class="list-group-item">Edit & Delete</li>
         </ul>
       </div>
+
+
+
+
+          <% for(var i=0, i< course.length; i++){ %>
+            <tr>
+              <td><%- course[i].title %> </td>
+              <td><%- course[i].content %> </td>
+              <td><a href="/course" class="mr-2">View</a></td>
+              <td><a href="/course" class="mr-2">Edit</a></td>
+                <a href="/course/delete/<%- course[i].id %">Delete</a></td>
+            </tr>
+          <% } %>
+        </div>
+
+        </div>
+
+
+      </div>
+
     </section>
+
 
     <%- include('components/footer') %>
 
