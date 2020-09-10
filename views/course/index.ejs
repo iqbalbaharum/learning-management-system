@@ -23,18 +23,20 @@
 
             <% for(var i=0, i< course.length; i++){ %>
               <tr>
-                <td><%- course[i].title %> </td>
-                <td><%- course[i].content %> </td>
-                <td><a href="/course" class="mr-2">View</a></td>
+                <td><%= course[x].title%></td>
+                <td><%= course[i].content%> </td>
+                <td><a href="/course" class="mr-2">Update</a></td>
                 <td><a href="/course" class="mr-2">Edit</a></td>
-                  <a href="/course/delete/<%- course[i].id %">Delete</a></td>
+                  <a href="/course/delete/ <%= course[i].id %>">Delete</a></td>
               </tr>
-
-
-        <% } %>
+            <% } %>
         </div>
 
     </section>
+
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="submit">Save changes</button>
+    </div>
 
 
 
