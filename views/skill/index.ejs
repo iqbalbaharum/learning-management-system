@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Free Software/Coding Academy</title>
+    <%- include('../components/style') %>
+  </head>
+
+  <body>
+    <%- include('../components/nav', { session: session }) %>
+
+    <section>
+        <div class="container">
+            <form action="/skill" method="POST">
+                <div class="input-group mb-3">
+                    <input type="text" name="skill" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    <div class="input-group-prepend">
+                        <button type="submit" class="btn btn-primary">Add Skill</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    <!--List skill-->
+    <br>
+    <div class="container">
+        <h1 class="btn-primary">List of Skills</h1>
+
+        <div class="list-wrapper">
+            <ul class="d-flex flex-column-reverse ">
+                <% for(var i = 0; i < skill.length; i++ ) { %>
+                    <li>
+                        <label>
+                            <%= skill[i].skill %>
+                        </label>
+                        <i class="remove mdi mdi-close-circle-outline"></i>
+                    </li>
+                
+                <% } %>
+            </ul>
+        </div>
+    </div>
+    </section>
+
+    <%- include('../components/footer') %>
+    <%- include('../components/script') %>
+
+  </body>
+
+</html>
