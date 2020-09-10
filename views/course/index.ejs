@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Free Software/Coding Academy</title>
+    <%- include('../components/style') %>
+  </head>
+
+  <body>
+    <%- include('../components/nav', { session: session }) %>
+
+    <section>
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <th style ="width:20%;">Course</th>
+          <th style ="width:20%;">Topic</th>
+          <th style ="width:20%;">Content</th>
+          <th style ="width:20%;">Edit & Delete</th>
+
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+    </section>
+
+    <%- include('components/footer') %>
+
+    <%- include('components/script') %>
+
+  </body>
+
+</html>
