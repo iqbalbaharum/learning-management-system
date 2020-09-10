@@ -13,39 +13,31 @@
         <div class="card-header">
           Featured
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Course</li>
-          <li class="list-group-item">Topic</li>
-          <li class="list-group-item">Content</li>
-          <li class="list-group-item">Edit & Delete</li>
-        </ul>
-      </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Degree Level</li>
+              <li class="list-group-item">Class Type</li>
+              <li class="list-group-item">Faculty</li>
+              <li class="list-group-item">View</li>
+            </ul>
 
 
+            <% for(var i=0, i< course.length; i++){ %>
+              <tr>
+                <td><%- course[i].title %> </td>
+                <td><%- course[i].content %> </td>
+                <td><a href="/course" class="mr-2">View</a></td>
+                <td><a href="/course" class="mr-2">Edit</a></td>
+                  <a href="/course/delete/<%- course[i].id %">Delete</a></td>
+              </tr>
 
 
-          <% for(var i=0, i< course.length; i++){ %>
-            <tr>
-              <td><%- course[i].title %> </td>
-              <td><%- course[i].content %> </td>
-              <td><a href="/course" class="mr-2">View</a></td>
-              <td><a href="/course" class="mr-2">Edit</a></td>
-                <a href="/course/delete/<%- course[i].id %">Delete</a></td>
-            </tr>
-          <% } %>
+        <% } %>
         </div>
-
-        </div>
-
-
-      </div>
 
     </section>
 
 
-    <%- include('components/footer') %>
 
-    <%- include('components/script') %>
 
   </body>
 
