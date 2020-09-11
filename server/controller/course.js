@@ -13,9 +13,9 @@ export default {
 
 	async newCourse(req, res) {
 		await Model.Course.create({
-			content: req.body.content,
-			title: req.body.title,
-			teamMember: req.body.team
+			level: req.body.level,
+			class: req.body.class,
+			faculty: req.body.faculty
 		})
 
 		res.redirect('/course')

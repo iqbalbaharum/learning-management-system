@@ -10,8 +10,8 @@
     <div class="container">
 
         <% if (session.isLoggedIn == true) { %>
-          <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCourse">Course Registration</button>
+          <div class="d-flex justify-content-left">
+            <button type="button" class="btn btn-primary btn-dark " data-toggle="modal" data-target="#newCourse">Course Registration</button>
           </div>
         <% } %>
     </div>
@@ -20,42 +20,32 @@
       <div class="container">
         <div class="row align-items-start">
           <div class="card" style="width: 100rem;">
-              <div class="card-header">
+              <div class="card-header text-center">
                 COURSE REGISTRATION PERIOD
               </div>
 
               <div class="row align-items-center">
-                <div class="col">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">DEGREE LEVEL</li>
-                </div>
-                <div class="col">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">CLASS TYPE</li>
-                </div>
-                <div class="col">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">FACULTY</li>
-                </div>
-                <div class="col">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">VIEW</li>
-                </div>
-
-                <% for(var x=0; x < course.length; x++ ){ %>
+                <table class="table" style="width:100%">
                     <tr>
-                        <td><%= course[i].title%></td>
-                        <td><%= course[i].content%> </td>
-                        <td><%= course[i].faculty%> </td>
-                        <td><a href="/course" class="mr-2">Update</a></td>
-                        <td><a href="/course" class="mr-2">Edit</a></td>
-                            <a href="/course/delete/ <%= course[i].id %>"<Delete</a>
+                      <th>DEGREE LEVEL</th>
+                      <th>CLASS TYPE</th>
+                      <th>FACULTY</th>
+                      <th>VIEW</th>
+                      <th>EDIT</th>
                     </tr>
-               <% } %>
+                    <% for(var x=0; x < course.length; x++ ){ %>
+                        <tr>
+                            <td><%= course[x].level%></td>
+                            <td><%= course[x].class%> </td>
+                            <td><%= course[x].faculty%> </td>
+                            <td><a href="/course" class="mr-2">Update</a></td>
+                            <td><a href="/course" class="mr-2">Edit</a></td>
+                                <a href="/course/delete/ <%= course[x].id %>"<Delete</a>
+                        </tr>
+                   <% } %>
+                  </table>
               </div>
         </div>
-
-
       </div>
     </div>
     </section>
@@ -73,15 +63,15 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Degree Level</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="level">
               </div>
               <div class="form-group">
                 <label>Class Type</label>
-                <input class="form-control" name="title"/>
+                <input class="form-control" name="class"/>
               </div>
               <div class="form-group">
                 <label>Faculty</label>
-                <input class="form-control" name="title"/>
+                <input class="form-control" name="faculty"/>
               </div>
 
             </div>
