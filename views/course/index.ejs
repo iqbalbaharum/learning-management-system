@@ -18,31 +18,30 @@
 
     <section>
       <div class="container">
-        <div class="row align-items-start">
-          <div class="card" style="width: 100rem;">
-              <div class="card-header text-center">
-                COURSE REGISTRATION PERIOD
-              </div>
-
               <div class="row align-items-center">
                 <table class="table" style="width:100%">
+                  <thead class="thead-dark">
+                    <div class="card-header text-center" style="width: 100rem;">
+                      COURSE REGISTRATION PERIOD
+                    </div>
                     <tr>
                       <th>DEGREE LEVEL</th>
                       <th>CLASS TYPE</th>
                       <th>FACULTY</th>
                       <th>VIEW</th>
-                      <th>EDIT</th>
+                      <th>DELETE</th>
                     </tr>
                     <% for(var x=0; x < course.length; x++ ){ %>
                         <tr>
                             <td><%= course[x].level%></td>
                             <td><%= course[x].class%> </td>
                             <td><%= course[x].faculty%> </td>
-                            <td><a href="/course" class="mr-2">Update</a></td>
-                            <td><a href="/course" class="mr-2">Edit</a></td>
+                            <td><a href="/course" class="mr-2 open AddCourseDialog" data-id=" <%= course[x].id %>">Update</a></td>
+                            <td><a href="/course" class="mr-2">Delete</a></td>
                                 <a href="/course/delete/ <%= course[x].id %>"<Delete</a>
                         </tr>
                    <% } %>
+                 </thread>
                   </table>
               </div>
         </div>
@@ -84,13 +83,43 @@
       </div>
     </div>
 
-
-
-
-
+    <div class="modal fade" id="updateCourse" tabindex="-1" aria-labelledby="updateCourseLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateCourseLabel">Course Registration</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/course" method="PUT">
+            <div class="modal-body">
+              <input type="text" name="id" id="courseId" value="">
+              <div class="form-group">
+                <label>Degree Level</label>
+                <input type="text" class="form-control" name="level">
+              </div>
+              <div class="form-group">
+                <label>Class Type</label>
+                <input class="form-control" name="class"/>
+              </div>
+              <div class="form-group">
+                <label>Faculty</label>
+                <input class="form-control" name="faculty"/>
+              </div>
 
     <%- include('../components/footer') %>
     <%- include('../components/script') %>
+
+    <script>
+          $(document).on("click", ".open-AddCourseDialog", function () {
+           var courseId = $(this).data('id');
+           $(".modal-body #courseId").val( courseId );
+           // As pointed out in comments,
+           // it is unnecessary to have to manually call the modal.
+           $('#updateCourse').modal('show');
+         });
+    </script>
   </body>
 
 </html>
