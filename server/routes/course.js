@@ -8,7 +8,7 @@ Router.route('/')
 Router.route('/delete/:id')
     .get(courseController.deleteCourse)
 
-Router.route('/:id')
-    .put(courseController.updateCourse)
+Router.route('/update')
+    .post(courseController.updateCourse)
 
 module.exports = Router

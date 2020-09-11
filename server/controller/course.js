@@ -29,17 +29,19 @@ export default {
 		})
 
 		res.redirect('/course')
-	}
-},
+	},
 
-async updateCourse (req, res) {
-	await Model.Course.update({
-	  where: {
-			level: req.body.level,
-			class: req.body.class,
-			faculty: req.body.faculty
-		})
-
-		res.redirect('/course')
-	}
+	async updateCourse(req, res){
+	        console.log(req.body)
+	        await Model.Course.update({
+						level: req.body.level,
+						class: req.body.class,
+						faculty: req.body.faculty
+	         },{
+	            where: {
+	              id: req.body.id
+	            }
+	          });
+	          res.redirect('/course')
+					}
 }
