@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Free Software/Coding Academy</title>
+    <%- include('../components/style') %>
+  </head>
+
+  <body>
+    <%- include('../components/nav', { session: session }) %>
+
+    <section>
+      <div class="container">
+				<div class="row mb-5">
+					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newContent">New Module</a>
+				</div>
+        <div class="row">
+          <% for(var i = 0; i < module.length; i++ ) { %>
+          <div class="col-md-6 col-lg-4 mb-3 mb-md-4">
+            <div class="card h-100 hover-box-shadow">
+              <div class="card-body">
+                <div>
+                <p><%= module[i].course %></p>
+                  <p><%= module[i].title %></p>
+                  <p><%= module[i].content %></p>
+                  <p><%= module[i].author %></p>
+                </div>
+              </div>
+              <div class="card-footer d-flex justify-content-between align-items-center">
+                <div class="gutter">
+									<a href="#" class="mr-2 open-AddBookDialog" data-id="<%= module[i].id %>" data-title="<%= module[i].title %>">Update</a>
+									<a href="/module/delete/<%= module[i].id %>">Delete</a>
+								</div>
+                <div class="text-small text-muted"><%= module[i].createdAt %></div>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </section>
+    
+    <div class="modal fade" id="newModule" tabindex="-1" aria-labelledby="newModuleLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newModuleLabel">Module Entry</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/module" method="POST">
+            <div class="modal-body">
+              <input type="text" name="id" id="ModuleID" value=""/>
+              <div class="form-group">
+                <label>Course</label>
+                <input class="form-control" name="course"/>
+              </div>
+              <div class="form-group">
+                <label>Title</label>
+                <input class="form-control" name="title"/>
+              </div>
+              <div class="form-group">
+                <label>Author</label>
+                <input class="form-control" name="author" />
+              </div>
+              <div class="form-group">
+                <label>Content</label>
+                <textarea class="form-control" rows="3" name="content"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="updateModule" tabindex="-1" aria-labelledby="newModuleLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateModuleLabel">Module Entry</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/module/update" method="POST">
+            <div class="modal-body">
+              <input type="text" name="id" id="ModuleID" value=""/>
+              <div class="form-group">
+                <label>Course</label>
+                <input class="form-control" name="course"/>
+              </div>
+              <div class="form-group">
+                <label>Title</label>
+                <input class="form-control" name="title"/>
+              </div>
+              <div class="form-group">
+                <label>Author</label>
+                <input class="form-control" name="author" />
+              </div>
+              <div class="form-group">
+                <label>Content</label>
+                <textarea class="form-control" rows="3" name="content"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include('../components/footer') %>
+    <%- include('../components/script') %>
+  </body>
+
+  </html>
+<script>
+    $(document).on("click", ".open-AddBookDialog", function () {
+     var ModuleID = $(this).data('id');
+     var title = $(this).data('id');
+     $("#ModuleID").val( ModuleID );
+     $("#title").val( title );
+     // As pointed out in comments, 
+     // it is unnecessary to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+     $('updateModule').modal('show')
+});
+
