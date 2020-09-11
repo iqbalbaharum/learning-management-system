@@ -1,4 +1,4 @@
-
+//Yesterday
 import Model from '../models'
 
 export default {
@@ -29,5 +29,23 @@ export default {
 		})
 
 		res.redirect('/journal')
+	},
+
+	// Nasuha
+	async updateJournal(req, res) {
+		await Model.Journal.update({
+			content: req.body.content,
+			title: req.body.title,
+			teamMember: req.body.team
+		})
+
+		red.redirect('/journal')
 	}
+
+	// exports.update = function(req, res, next){
+	// 	var body = req.body;
+	// 	req.pet.name = body.pet.name;
+	// 	res.message('Information updated!');
+	// 	res.redirect('/pet/' + req.pet.id);
+	//   };
 }

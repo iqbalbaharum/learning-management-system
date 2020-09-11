@@ -1,3 +1,4 @@
+// Yesterday
 const Router = require('express').Router()
 import journalController  from '../controller/journal'
 
