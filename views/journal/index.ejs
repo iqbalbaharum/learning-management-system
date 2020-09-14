@@ -18,10 +18,14 @@
           <% for(var i = 0; i < journals.length; i++ ) { %>
           <div class="col-md-6 col-lg-4 mb-3 mb-md-4">
             <div class="card h-100 hover-box-shadow">
+              <img src="/images/bg-title-01.jpg" class="card-img-top">
+              <div class="card-header">                
+                <p><%= journals[i].title %></p>
+              </div>
               <div class="card-body">
                 <div>
-                  <p><%= journals[i].title %></p>
                   <p><%= journals[i].content %></p>
+                  <div class="text-small text-muted"><%= journals[i].createdAt %></div>
                 </div>
               </div>
               <div class="card-footer d-flex justify-content-between align-items-center">
@@ -30,7 +34,7 @@
                   <!-- Pass data pergi ke route -> controller -->
 									<a href="/journal/delete/<%= journals[i].id %>">Delete</a>
 								</div>
-                <div class="text-small text-muted"><%= journals[i].createdAt %></div>
+                <div class="text-small text-muted"><%= journals[i].updatedAt %></div>
               </div>
             </div>
           </div>

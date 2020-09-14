@@ -18,11 +18,12 @@
           <% for(var i = 0; i < project.length; i++ ) { %>
           <div class="col-md-6 col-lg-4 mb-3 mb-md-4">
             <div class="card h-100 hover-box-shadow">
+              <div class="card-header text-center">
+                <div><p><%= project[i].title %></p></div>
+              </div>
               <div class="card-body">
-                <div>
-                  <p><%= project[i].title %></p>
-                  <p><%= project[i].content %></p>
-                </div>
+                <div><p><%= project[i].content %></p></div>
+                <div class="text-small text-muted">Created at: <%= project[i].createdAt %></div>
               </div>
               <div class="card-footer d-flex justify-content-between align-items-center">
                 <div class="gutter">
@@ -30,7 +31,7 @@
                   <!-- Pass data pergi ke route -> controller -->
                     <a href="/project/delete/<%= project[i].id %>">Delete</a>
                 </div>
-                <div class="text-small text-muted"><%= project[i].createdAt %></div>
+                <div class="text-small text-muted"><%= project[i].updatedAt %></div>
               </div>
             </div>
           </div>
