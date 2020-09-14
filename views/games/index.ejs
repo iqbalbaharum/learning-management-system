@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Free Software/Coding Academy</title>
+    <%- include('../components/style') %>
+  </head>
+
+  <body>
+    <%- include('../components/nav', { session: session }) %>
+    <section>
+      <div class="container">
+        <input class="form-control form-control-lg h-100 mb-2 mb-md-0 mr-md-3" name="help-search" placeholder="Search" type="search"
+        id="myInput" onkeyup="myFunction()">
+        <br>
+				<div class="row mb-5">
+  					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newGames">New Note</a>
+				</div>
+        <div class="row">
+          <table id="myTable">
+            <tr class="header">
+              <th style="width:25%;">Course</th>
+              <th style="width:45%;">Topic</th>
+              <th style="width:20%;">Content</th>
+              <th style="width:10%;">Delete</th>
+
+          <% for(var i = 0; i < games.length; i++ ) { %>
+              <tr>
+                <td><%= games[i].course %></td>
+                <td><%= games[i].topic %></td>
+                <td><a href="#" onclick="return false;" class="mr-2 open-AddBookDialog" data-id="<%= games[i].id %>" 
+                  data-course="<%= games[i].course %>" data-topic="<%= games[i].topic %>" data-content="<%= games[i].content %>">View / Edit</a></td>
+                <td><a href="/games/delete/<%= games[i].id %>" data-confirm="Are you sure you want to delete ?">Delete</a></td>
+              </tr>
+          <% } %>
+        </table>
+        </div>
+      </div>
+    </section>
+    
+    <div class="modal fade" id="updateGames" tabindex="-1" role="dialog" aria-labelledby="updateGamesLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateGamesLabel">Games Entry</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/games/update" method="POST">
+            <div class="modal-body">
+              <input type="hidden" name="id" id="GamesID" value=""/>
+              <div class="form-group">
+                <label>Course</label>
+                <input class="form-control" id="course" name="course">
+              </div>
+              <div class="form-group">
+                <label>Topic</label>
+                <input class="form-control" id="topic" name="topic">
+              </div>
+              <div class="form-group">
+                <label>Content</label>
+                <textarea class="form-control" rows="18" id="content" name="content"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>    
+   
+    <div class="modal fade" id="newGames" tabindex="-1" aria-labelledby="newGamesLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newGamesLabel">Games Entry</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/games" method="POST">
+            <div class="modal-body">
+
+              <div class="form-group">
+                <label>Course</label>
+                <input class="form-control" name="course"/>
+              </div>
+              <div class="form-group">
+                <label>Topic</label>
+                <input class="form-control" name="topic"/>
+              </div>
+              <div class="form-group">
+                <label>Content</label>
+                <textarea class="form-control" rows="3" name="content"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit">Create</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+		<%- include('../components/footer') %>
+    <%- include('../components/script') %>
+</body>
+
+</html>
