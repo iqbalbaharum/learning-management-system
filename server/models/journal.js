@@ -1,4 +1,5 @@
 //Yesterday
+//using sequalize object
 module.exports = (sequelize, DataTypes) => {
 	const Journal = sequelize.define('Journal', {
 		title: DataTypes.STRING,

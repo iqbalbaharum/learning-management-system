@@ -11,26 +11,26 @@
 
     <section>
       <div class="container">
-				<div class="row mb-5">
-					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newJournal">New Journal</a>
-				</div>
+        <div class="row mb-5">
+            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#newProject">New Project</a>
+        </div>
         <div class="row">
-          <% for(var i = 0; i < journals.length; i++ ) { %>
+          <% for(var i = 0; i < project.length; i++ ) { %>
           <div class="col-md-6 col-lg-4 mb-3 mb-md-4">
             <div class="card h-100 hover-box-shadow">
               <div class="card-body">
                 <div>
-                  <p><%= journals[i].title %></p>
-                  <p><%= journals[i].content %></p>
+                  <p><%= project[i].title %></p>
+                  <p><%= project[i].content %></p>
                 </div>
               </div>
               <div class="card-footer d-flex justify-content-between align-items-center">
                 <div class="gutter">
-                  <a href="#" class="mr-2 open-AddBookDialog" data-id="<%= journals[i].id %>">Update</a>
+                  <a href="#" class="mr-2 open-AddBookDialog" data-id="<%= project[i].id %>">Update</a>
                   <!-- Pass data pergi ke route -> controller -->
-									<a href="/journal/delete/<%= journals[i].id %>">Delete</a>
-								</div>
-                <div class="text-small text-muted"><%= journals[i].createdAt %></div>
+                    <a href="/project/delete/<%= project[i].id %>">Delete</a>
+                </div>
+                <div class="text-small text-muted"><%= project[i].createdAt %></div>
               </div>
             </div>
           </div>
@@ -39,17 +39,18 @@
       </div>
     </section>
     
-    <!-- New Journal Modal -->
-    <div class="modal fade" id="newJournal" tabindex="-1" aria-labelledby="newJournalLabel" aria-hidden="true">
+    <!-- New Project Modal -->
+    <div class="modal fade" id="newProject" tabindex="-1" aria-labelledby="newProjectLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="newJournalLabel">Journal Entry</h5>
+            <h5 class="modal-title" id="newProjectLabel">Project Entry</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="/journal" method="POST">
+          <!-- Data akan dihantar -> routes -> controller -->
+          <form action="/project" method="POST">
             <div class="modal-body">
               <div class="form-group">
                 <label>Title</label>
@@ -77,7 +78,7 @@
         </div>
       </div>
     </div>
-    <!-- End New Journal Modal -->
+    <!-- End New Project Modal -->
 
     <!-- Update Journal Modal -->
     <div class="modal fade" id="updateJournal" tabindex="-1" aria-labelledby="updateJournalLabel" aria-hidden="true">
@@ -89,7 +90,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="/journal/update" method="POST">
+          <form action="/project/update" method="POST">
             <div class="modal-body">
               <!-- name=id sbb kat backend kita hantar id -->
               <input type="text" name="id" id="journalID" value="">
