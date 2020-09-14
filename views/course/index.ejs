@@ -36,9 +36,8 @@
                                 <td><%= course[x].level%></td>
                                 <td><%= course[x].class%> </td>
                                 <td><%= course[x].faculty%> </td>
-                                <td><a href="/course" class="mr-2 open-AddCourseDialog" data-id=" <%= course[x].id %>">Update</a></td>
-                                <td><a href="/course" class="mr-2">Delete</a></td>
-                                    <a href="/course/delete/ <%= course[x].id %>"<Delete</a>
+                                <td><a href="#" onclick="return false;" class="mr-2 open-AddCourseDialog" data-id=" <%= course[x].id %>" data-level="<%= course[x].level %>" data-class2="<%= course[x].class %>" data-faculty="<%= course[x].faculty %>">Update</a></td>
+                                <td><a href="/course/delete/<%= course[x].id %>"  data-confirm="Are you sure you want to delete ?">Delete</a></td>
                             </tr>
                         <% } %>
                       </thead>
@@ -101,15 +100,15 @@
                       <input type="text" name="id" id="courseId" value="">
                       <div class="form-group">
                         <label>Degree Level</label>
-                        <input type="text" class="form-control" name="level"></input>
+                        <input type="text" class="form-control" id="level" name="level"></input>
                       </div>
                       <div class="form-group">
                         <label>Class Type</label>
-                        <input class="form-control" name="class"></input>
+                        <input class="form-control" id="class2" name="class"></input>
                       </div>
                       <div class="form-group">
                         <label>Faculty</label>
-                        <input class="form-control" name="faculty"></input>
+                        <input class="form-control" id="faculty" name="faculty"></input>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -129,7 +128,13 @@
     <script>
           $(document).on("click", ".open-AddCourseDialog", function () {
           var courseId = $(this).data('id');
+          var level = $(this).data('level');
+          var class2 = $(this).data('class2');
+          var faculty = $(this).data('faculty');
           $(".modal-body #courseId").val( courseId );
+          $(".modal-body #level").val( level );
+          $(".modal-body #class2").val( class2 );
+          $(".modal-body #faculty").val( faculty );
            // As pointed out in comments,
            // it is unnecessary to have to manually call the modal.
            $('#updateCourse').modal('show');
