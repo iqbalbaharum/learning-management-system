@@ -81,12 +81,12 @@
     </div>
     <!-- End New Project Modal -->
 
-    <!-- Update Journal Modal -->
-    <div class="modal fade" id="updateJournal" tabindex="-1" aria-labelledby="updateJournalLabel" aria-hidden="true">
+    <!-- Update Project Modal -->
+    <div class="modal fade" id="updateProject" tabindex="-1" aria-labelledby="updateProjectLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="updateJournalLabel">Journal Entry</h5>
+            <h5 class="modal-title" id="updateProjectLabel">Project Entry</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -94,7 +94,7 @@
           <form action="/project/update" method="POST">
             <div class="modal-body">
               <!-- name=id sbb kat backend kita hantar id -->
-              <input type="text" name="id" id="journalID" value="">
+              <input type="text" name="id" id="projectID" value="">
               <div class="form-group">
                 <label>Title</label>
                 <input class="form-control" name="title"/>
@@ -121,7 +121,7 @@
         </div>
       </div>
     </div>
-    <!-- End Update Journal Modal -->
+    <!-- End Update Project Modal -->
 		
     <%- include('../components/footer') %>
     <%- include('../components/script') %>
@@ -130,9 +130,9 @@
       /* # - refer to id
          . - refer to class */
       $(document).on("click", ".open-AddBookDialog", function(){
-        var myJournalID = $(this).data('id');
-        $(".modal-body #journalID").val(myJournalID);
-        $('#updateJournal').modal('show');
+        var myProjectID = $(this).data('id');
+        $(".modal-body #projectID").val(myProjectID);
+        $('#updateProject').modal('show');
       });
     </script>
 
