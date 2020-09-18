@@ -11,7 +11,7 @@
 
         <% if (session.isLoggedIn == true) { %>
           <div class="d-flex justify-content-left">
-            <button type="button" class="btn btn-primary btn-dark " data-toggle="modal" data-target="#newTutorial">Tutorial</button>
+            <button type="button" class="btn btn-primary btn-dark" data-toggle="modal" data-target="#newTutorial" >Tutorial</button>
           </div>
         <% } %>
     </div>
@@ -46,35 +46,35 @@
 
     </section>
 
- <!-- New Tutorial Modal -->
+    <!-- New Tutorial Modal -->
     <div class="modal fade" id="newTutorial" tabindex="-1" aria-labelledby="newTutorialLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="newTutorialLabel">Tutorial</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form action="/tutorial" method="POST">
-            <div class="modal-body">
-              <div class="form-group">
-                <label>Title</label>
-                <input type="text" class="form-control" name="title">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="newTutorialLabel">Tutorial</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="form-group">
-                <label>Description</label>
-                <input class="form-control" name="description"/>
-              </div>
+              <form action="/tutorial" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" name="title">
+                  </div>
+                  <div class="form-group">
+                    <label>Description</label>
+                    <input class="form-control" name="description"/>
+                  </div>
 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+              </form>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button class="btn btn-primary" type="submit">Save changes</button>
-            </div>
-          </form>
-        </div>
-      </div>
+          </div>
     </div>
  <!-- End Tutorial Modal -->
 
@@ -99,7 +99,7 @@
                       </div>
                       <div class="form-group">
                         <label>Description</label>
-                        <input class="form-control" id="class2" name="description"></input>
+                        <input class="form-control" id="description" name="description"></input>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -125,7 +125,7 @@
           $(".modal-body #tutorialId").val( tutorialId );
           $(".modal-body #title").val( title );
           $(".modal-body #description").val( description );
-          
+
            // As pointed out in comments,
            // it is unnecessary to have to manually call the modal.
            $('#updateTutorial').modal('show');
