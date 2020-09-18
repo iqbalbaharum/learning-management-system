@@ -30,17 +30,16 @@
                             <th>VIEW</th>
                             <th>DELETE</th>
                           </tr>
-                        <% for(var x=0; x < tutorial.length; x++ ){ %>
+                          <% for(var x=0; x < tutorial.length; x++ ){ %>
                             <tr>
                                 <td><%= tutorial[x].title%></td>
                                 <td><%= tutorial[x].description%> </td>
-
                                 <td><a href="#" onclick="return false;" class="mr-2 open-AddTutorialDialog" data-id=" <%= tutorial[x].id %>" data-title="<%= tutorial[x].title %>" data-description="<%= tutorial[x].description %>" >Update</a></td>
                                 <td><a href="/tutorial/delete/<%= tutorial[x].id %>"  data-confirm="Are you sure you want to delete ?">Delete</a></td>
                             </tr>
-                        <% } %>
-                      </thead>
-                  </table>
+                          <% } %>
+                    </thead>
+                </table>
               </div>
         </div>
 

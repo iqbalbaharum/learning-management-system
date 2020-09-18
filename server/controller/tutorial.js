@@ -6,7 +6,7 @@ export default {
 		const tutorial = await Model.Tutorial.findAll()
 		res.render('tutorial/index', {
 				session: req.session,
-				tutorials: tutorial
+				tutorial: tutorial
 		})
 	},
 

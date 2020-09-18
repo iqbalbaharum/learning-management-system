@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Free Software/Coding Academy</title>
+    <%- include('../components/style') %>
+  </head>
+
+  <body>
+    <%- include('../components/nav', { session: session }) %>
+    <div class="container">
+
+        <% if (session.isLoggedIn == true) { %>
+          <div class="d-flex justify-content-left">
+            <button type="button" class="btn btn-primary btn-dark" data-toggle="modal" data-target="#newTag" >Tag</button>
+          </div>
+        <% } %>
+    </div>
+
+    <section>
+      <div class="container">
+              <div class="row align-items-center">
+                <table class="table" style="width:100%">
+                    <thead class="thead-dark">
+                          <div class="card-header text-center" style="width: 100rem;">
+                            Tag
+                          </div>
+                          <tr>
+                            <th>NAME</th>
+                            <th>VIEW</th>
+                            <th>DELETE</th>
+                          </tr>
+                          <% for(var x=0; x < tag.length; x++ ){ %>
+                            <tr>
+                                <td><%= tag[x].name%></td>
+                                <td><a href="#" onclick="return false;" class="mr-2 open-AddTagDialog" data-id=" <%= tag[x].id %>" data-name="<%= tag[x].name %>" >Update</a></td>
+                                <td><a href="/tag/delete/<%= tag[x].id %>"  data-confirm="Are you sure you want to delete ?">Delete</a></td>
+                            </tr>
+                          <% } %>
+                    </thead>
+                </table>
+              </div>
+        </div>
+    </section>
+
+    <!-- New Tag Modal -->
+    <div class="modal fade" id="newTag" tabindex="-1" aria-labelledby="newTagLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="newTagLabel">Tag</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="/tag" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+    </div>
+ <!-- End Tag Modal -->
+
+ <!-- Update Tutorial Modal -->
+ <div class="modal fade" id="updateTag" tabindex="-1" aria-labelledby="updateTagLabel" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="updateTagLabel">Tag</h5>
+
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+
+               <form action="/tag/update" method="POST">
+                   <div class="modal-body">
+                     <input type="text" name="id" id="tagId" value="">
+                     <div class="form-group">
+                       <label>Name</label>
+                       <input type="text" class="form-control" id="name" name="name"></input>
+                     </div>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                       <button class="btn btn-primary" type="submit">Save changes</button>
+                   </div>
+               </form>
+
+         </div>
+       </div>
+</div>
+<!-- End Update Tutorial Modal -->
+
+   <%- include('../components/footer') %>
+   <%- include('../components/script') %>
+
+   <script>
+         $(document).on("click", ".open-AddTagDialog", function () {
+         var tutorialId = $(this).data('id');
+         var name = $(this).data('name');
+
+         $(".modal-body #tutorialId").val( tutorialId );
+         $(".modal-body #name").val( name );
+          // As pointed out in comments,
+          // it is unnecessary to have to manually call the modal.
+          $('#updateTag').modal('show');
+        });
+   </script>
+
+  </body>
+</html>

@@ -5,9 +5,9 @@ export default {
 
 	async index (req, res) {
 		const tag = await Model.Tag.findAll()
-		res.render('tutorial/index', {
+		res.render('tag/index', {
 				session: req.session,
-				tags: tag
+				tag: tag
 		})
 	},
 
@@ -15,7 +15,28 @@ export default {
 		await Model.Tag.create({
       name: req.body.name
 		})
-		res.redirect('/tutorial')
+		res.redirect('/tag')
 	},
 
+	async deleteTutorial(req, res) {
+		await Model.Tutorial.destroy({
+			where: {
+				id: req.params.id
+			}
+		})
+
+		res.redirect('/tag')
+	},
+
+	async updateTutorial(req, res){
+					console.log(req.body)
+					await Model.Tag.update({
+						name: req.body.name
+					 },{
+							where: {
+								id: req.body.id
+							}
+						});
+						res.redirect('/tag')
+					}
 }
