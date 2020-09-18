@@ -58,27 +58,26 @@
                     <label>Name</label>
                     <input type="text" class="form-control" name="name">
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button class="btn btn-primary" type="submit">Save changes</button>
-                </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="submit">Save changes</button>
+                  </div>
               </form>
             </div>
           </div>
     </div>
  <!-- End Tag Modal -->
 
- <!-- Update Tutorial Modal -->
+ <!-- Update Tag Modal -->
  <div class="modal fade" id="updateTag" tabindex="-1" aria-labelledby="updateTagLabel" aria-hidden="true">
        <div class="modal-dialog">
          <div class="modal-content">
            <div class="modal-header">
-             <h5 class="modal-title" id="updateTagLabel">Tag</h5>
-
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-             </button>
+               <h5 class="modal-title" id="updateTagLabel">Tag</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
            </div>
 
                <form action="/tag/update" method="POST">
@@ -94,21 +93,20 @@
                        <button class="btn btn-primary" type="submit">Save changes</button>
                    </div>
                </form>
-
          </div>
        </div>
 </div>
-<!-- End Update Tutorial Modal -->
+<!-- End Update Tag Modal -->
 
    <%- include('../components/footer') %>
    <%- include('../components/script') %>
 
    <script>
          $(document).on("click", ".open-AddTagDialog", function () {
-         var tutorialId = $(this).data('id');
+         var tagId = $(this).data('id');
          var name = $(this).data('name');
 
-         $(".modal-body #tutorialId").val( tutorialId );
+         $(".modal-body #tagId").val( tagId );
          $(".modal-body #name").val( name );
           // As pointed out in comments,
           // it is unnecessary to have to manually call the modal.
