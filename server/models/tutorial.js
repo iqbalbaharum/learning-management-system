@@ -6,3 +6,15 @@ module.exports = (sequelize, DataTypes) => {
 
 	return Tutorial;
 };
+
+//const Tutorial = sequelize.define('Tutorial', {
+//	title: DataTypes.STRING,
+//	description: DataTypes.STRING,
+//});
+
+//const Tag = sequelize.define('Tag', {
+//  name: DataTypes.STRING,
+//});
+
+//Tutorial.hasMany(Tag);
+//Tag.belongsTo(Tutorial);
