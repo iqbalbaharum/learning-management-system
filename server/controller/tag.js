@@ -18,8 +18,8 @@ export default {
 		res.redirect('/tag')
 	},
 
-	async deleteTutorial(req, res) {
-		await Model.Tutorial.destroy({
+	async deleteTag(req, res) {
+		await Model.Tag.destroy({
 			where: {
 				id: req.params.id
 			}
@@ -28,7 +28,7 @@ export default {
 		res.redirect('/tag')
 	},
 
-	async updateTutorial(req, res){
+	async updateTag(req, res){
 					console.log(req.body)
 					await Model.Tag.update({
 						name: req.body.name
