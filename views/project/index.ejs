@@ -14,6 +14,27 @@
         <div class="row mb-5">
             <a href="" class="btn btn-primary" data-toggle="modal" data-target="#newProject">New Project</a>
         </div>
+
+        <!-- Count Element in Project Table -->
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-3 mb-md-4">
+            <div class="card h-100 hover-box-shadow">
+              <div class="card">
+                <div class="card-header">
+                  Total Elements in Project Table
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Using Count Utilities in Sequelize</h5>
+                  <p class="card-text">There are <%= totalElem %> elements found in Project Table</p>
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+        <!-- End Count Element in Project Table -->
+
+        <!-- Projects Card -->
+        <!-- project array datang daripada function index in controller -->
         <div class="row">
           <% for(var i = 0; i < project.length; i++ ) { %>
           <div class="col-md-6 col-lg-4 mb-3 mb-md-4">
@@ -37,6 +58,7 @@
           </div>
           <% } %>
         </div>
+        <!-- End Projects Card -->
       </div>
     </section>
     

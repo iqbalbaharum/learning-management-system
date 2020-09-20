@@ -11,4 +11,7 @@ Router.route('delete/:id')
 Router.route('/update')
     .post(projectController.updateProject)
 
+Router.route('')
+    .get(projectController.countProject)
+
 module.exports = Router

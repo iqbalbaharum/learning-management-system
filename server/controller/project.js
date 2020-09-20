@@ -4,9 +4,11 @@ export default {
 
     async index (req, res) {
         const project = await Model.Project.findAll()
+        const totalElem = await Model.Project.count();
         res.render('project/index', {
             session: req.session,
-            project: project
+            project: project,
+            totalElem: totalElem
         })
     },
 
@@ -40,6 +42,12 @@ export default {
                 id: req.body.id
             }
         });
+
+        res.redirect('/project')
+    },
+
+    async countProject (req, res) {
+        await Project.count();
 
         res.redirect('/project')
     }
