@@ -26,14 +26,15 @@
                           </div>
                           <tr>
                             <th>NAME</th>
-                            <th>TEXT</th>
+                            <th> </th>
                             <th>VIEW</th>
                             <th>DELETE</th>
                           </tr>
                           <% for(var x=0; x < tag.length; x++ ){ %>
                             <tr>
                                 <td><%= tag[x].name%></td>
-                                <td><a href="#" onclick="return false;" class="mr-2 open-AddTagDialog" data-id=" <%= tag[x].id %>" data-name="<%= tag[x].name %>" >Update</a></td>
+                                <td> </td>
+                                <td><a href="#" onclick="return false;" class="mr-2 open-AddTagDialog" data-id=" <%= tag[x].id %>" data-name="<%= tag[x].name %>">Update</a></td>
                                 <td><a href="/tag/delete/<%= tag[x].id %>"  data-confirm="Are you sure you want to delete ?">Delete</a></td>
                             </tr>
                           <% } %>
@@ -107,8 +108,10 @@
          var tagId = $(this).data('id');
          var name = $(this).data('name');
 
+
          $(".modal-body #tagId").val( tagId );
          $(".modal-body #name").val( name );
+
           // As pointed out in comments,
           // it is unnecessary to have to manually call the modal.
           $('#updateTag').modal('show');
