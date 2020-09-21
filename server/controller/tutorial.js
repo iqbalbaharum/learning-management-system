@@ -46,7 +46,7 @@ exports.findTutorialById = (tutorialId) => {
 };
 
 // Get the Tag for a given Tag id
-exports.findCommentById = (id) => {
+exports.findTagById = (id) => {
   return Tag.findByPk(id, { include: ["tutorial"] })
     .then((tag) => {
       return tag;
