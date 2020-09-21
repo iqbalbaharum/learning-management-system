@@ -1,3 +1,4 @@
+
 module.exports = (sequelize, DataTypes) => {
 	const Tutorial = sequelize.define('Tutorial', {
 		title: DataTypes.STRING,
@@ -7,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
 	return Tutorial;
 };
 
+
 //const Tutorial = sequelize.define('Tutorial', {
 //	title: DataTypes.STRING,
 //	description: DataTypes.STRING,
@@ -15,6 +17,3 @@ module.exports = (sequelize, DataTypes) => {
 //const Tag = sequelize.define('Tag', {
 //  name: DataTypes.STRING,
 //});
-
-//Tutorial.hasMany(Tag);
-//Tag.belongsTo(Tutorial);

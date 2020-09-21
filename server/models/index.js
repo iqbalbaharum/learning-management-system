@@ -23,4 +23,14 @@ Fs.readdirSync(__dirname)
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+
+db.tutorial = require("./tutorial.js")(sequelize, Sequelize);
+db.tag = require("./tag.js")(sequelize, Sequelize);
+
+db.tutorial.hasMany(db.tag, { as: "tag" });
+db.tag.belongsTo(db.tutorial, {
+  foreignKey: "tutorialId",
+  as: "tutorial",
+});
+
 module.exports = db

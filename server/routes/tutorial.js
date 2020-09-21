@@ -1,5 +1,7 @@
 const Router = require('express').Router()
 import tutorialController  from '../controller/tutorial'
+import tagController  from '../controller/tag'
+
 
 Router.route('/')
     .get(tutorialController.index)
@@ -10,5 +12,6 @@ Router.route('/delete/:id')
 
 Router.route('/update')
     .post(tutorialController.updateTutorial)
+
 
 module.exports = Router
