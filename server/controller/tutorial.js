@@ -21,11 +21,11 @@ exports.createTutorial = (tutorial) => {
 // Create and Save new Tag
 exports.createTag = (tutorialId, tag) => {
   return Tag.create({
-    name: comment.name,
-    text: comment.text,
+    name: tag.name,
+    text: tag.text,
     tutorialId: tutorialId,
   })
-    .then((comment) => {
+    .then((tag) => {
       console.log(">> Created tag: " + JSON.stringify(tag, null, 4));
       return tag;
     })
@@ -48,8 +48,8 @@ exports.findTutorialById = (tutorialId) => {
 // Get the Tag for a given Tag id
 exports.findCommentById = (id) => {
   return Tag.findByPk(id, { include: ["tutorial"] })
-    .then((comment) => {
-      return comment;
+    .then((tag) => {
+      return tag;
     })
     .catch((err) => {
       console.log(">> Error while finding tag: ", err);
