@@ -3,7 +3,9 @@ import Model from '../models'
 export default {
 
     async index (req, res) {
+        /* Select All Elemnts in table Project */
         const project = await Model.Project.findAll()
+        /* Count All Elemnts in table Project */
         const totalElem = await Model.Project.count();
         res.render('project/index', {
             session: req.session,
@@ -42,12 +44,6 @@ export default {
                 id: req.body.id
             }
         });
-
-        res.redirect('/project')
-    },
-
-    async countProject (req, res) {
-        await Project.count();
 
         res.redirect('/project')
     }
