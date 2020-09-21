@@ -18,7 +18,7 @@ exports.createTutorial = (tutorial) => {
     });
 };
 
-// Create and Save new Comments
+// Create and Save new Tag
 exports.createTag = (tutorialId, tag) => {
   return Tag.create({
     name: comment.name,
@@ -45,7 +45,7 @@ exports.findTutorialById = (tutorialId) => {
     });
 };
 
-// Get the comments for a given comment id
+// Get the comments for a given Tag id
 exports.findCommentById = (id) => {
   return Tag.findByPk(id, { include: ["tutorial"] })
     .then((comment) => {
@@ -56,7 +56,7 @@ exports.findCommentById = (id) => {
     });
 };
 
-// Get all Tutorials include comments
+// Get all Tutorials include Tag
 exports.findAll = () => {
   return Tutorial.findAll({
     include: ["tag"],
