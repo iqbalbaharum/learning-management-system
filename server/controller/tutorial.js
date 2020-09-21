@@ -34,7 +34,7 @@ exports.createTag = (tutorialId, tag) => {
     });
 };
 
-// Get the comments for a given tutorial
+// Get the Tag for a given tutorial
 exports.findTutorialById = (tutorialId) => {
   return Tutorial.findByPk(tutorialId, { include: ["tag"] })
     .then((tutorial) => {
