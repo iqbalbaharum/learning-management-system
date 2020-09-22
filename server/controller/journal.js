@@ -4,7 +4,9 @@ import Model from '../models'
 export default {
 
 	async index (req, res) {
+
 		const journals = await Model.Journal.findAll()
+
 		res.render('journal/index', {
 				session: req.session,
 				journals: journals 

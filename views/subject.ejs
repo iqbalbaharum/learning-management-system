@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Free Software/Coding Academy</title>
+    <%- include('./components/style') %>
+  </head>
+
+  <body>
+    <%- include('./components/nav', { session: session }) %>
+
+    <section>
+      <div class="container">
+				<div class="row mb-5">
+					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newSubject">New Subject</a>
+				</div>
+        <div class="row">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Name</th>
+								<th scope="col">Actions</th>
+							</tr>
+							<tbody>
+								<% for(var i = 0; i < subjects.length; i++ ) { %>
+								<tr>
+									<th scope="row"><%= i + 1 %></th>
+									<td><%= subjects[i].name %></td>
+									<td></td>
+								</tr>
+								<% } %>
+							</tbody>
+						</thead>
+					</table>
+          
+        </div>
+      </div>
+    </section>
+    
+    <div class="modal fade" id="newSubject" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New Subject</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/subject" method="POST">
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" name="name"/>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+		
+    <%- include('./components/footer') %>
+    <%- include('./components/script') %>
+
+  </body>
+
+</html>
