@@ -112,6 +112,39 @@
 </div>
 <!-- End Update Tutorial Modal -->
 
+<!-- Many to many relationship Tutorial Modal -->
+<div class="modal fade" id="assignTutorial" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tutorial To Tag</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/tutorial/assign" method="POST">
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="hidden" id="modalTutorialId" name="id"/>
+            <label>Tag</label>
+            <select class="custom-select" name="TagId">
+              <option selected>Open this select menu</option>
+              <% for(var x = 0; x < tutorial.length; x++ ) { %>
+                <option value="<%= tutorial[x].id %>"><%= tutorial[x].name %></option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="submit">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End many to many relationship Tutorial Modal -->
+
     <%- include('../components/footer') %>
     <%- include('../components/script') %>
 
@@ -129,8 +162,23 @@
            // it is unnecessary to have to manually call the modal.
            $('#updateTutorial').modal('show');
          });
-
     </script>
+
+    <script>
+      $('#newTutorialLabel').on('click', function(e) {
+
+        // copy data from data-id and pass it to form
+        const id = $('#newTutorialLabel').data('id')
+        $('#modalTutorialId').val(id)
+
+        // modal opening
+        $('#assignTutorial').modal('show')
+
+        // prevent refresh
+        e.preventDefault()
+      })
+    </script>
+
   </body>
 
 </html>

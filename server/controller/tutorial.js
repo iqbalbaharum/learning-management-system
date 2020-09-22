@@ -18,51 +18,56 @@ exports.createTutorial = (tutorial) => {
     });
 };
 
-// Create and Save new Tag
-exports.createTag = (tutorialId, tag) => {
-  return Tag.create({
-    name: tag.name,
-    text: tag.text,
-    tutorialId: tutorialId,
-  })
-    .then((tag) => {
-      console.log(">> Created tag: " + JSON.stringify(tag, null, 4));
-      return tag;
-    })
-    .catch((err) => {
-      console.log(">> Error while creating tag: ", err);
-    });
-};
+//Retrieve all Tutorials
 
-// Get the Tag for a given tutorial
-exports.findTutorialById = (tutorialId) => {
-  return Tutorial.findByPk(tutorialId, { include: ["tag"] })
+exports.findAll = () => {
+  return Tutorial.findAll({
+    include: [
+      {
+        model: Tag,
+        as: "tag",
+        attributes: ["id", "name"],
+        through: {
+          attributes: [],
+        },
+        // through: {
+        //   attributes: ["tag_id", "tutorial_id"],
+        // },
+      },
+    ],
+  })
     .then((tutorial) => {
       return tutorial;
     })
     .catch((err) => {
-      console.log(">> Error while finding tutorial: ", err);
+      console.log(">> Error while retrieving Tutorials: ", err);
     });
 };
 
-// Get the Tag for a given Tag id
-exports.findTagById = (id) => {
-  return Tag.findByPk(id, { include: ["tutorial"] })
-    .then((tag) => {
-      return tag;
+//Get the Tutorial for a given tutorial id
+
+exports.findById = (id) => {
+  return Tutorial.findByPk(id, {
+    include: [
+      {
+        model: Tag,
+        as: "tag",
+        attributes: ["id", "name"],
+        through: {
+          attributes: [],
+        },
+        // through: {
+        //   attributes: ["tag_id", "tutorial_id"],
+        // },
+      },
+    ],
+  })
+    .then((tutorial) => {
+      return tutorial;
     })
     .catch((err) => {
-      console.log(">> Error while finding tag: ", err);
+      console.log(">> Error while finding Tutorial: ", err);
     });
-};
-
-// Get all Tutorials include Tag
-exports.findAll = () => {
-  return Tutorial.findAll({
-    include: ["tag"],
-  }).then((tutorial) => {
-    return tutorial;
-  });
 };
 
 export default {
