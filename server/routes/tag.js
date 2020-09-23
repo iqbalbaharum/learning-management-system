@@ -1,6 +1,5 @@
 const Router = require('express').Router()
 import tagController  from '../controller/tag'
-import tutorialController  from '../controller/tutorial'
 
 Router.route('/')
     .get(tagController.index)

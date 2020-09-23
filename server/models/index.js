@@ -27,10 +27,16 @@ db.Sequelize = Sequelize;
 db.tutorial = require("./tutorial.js")(sequelize, Sequelize);
 db.tag = require("./tag.js")(sequelize, Sequelize);
 
-db.tutorial.hasMany(db.tag, { as: "tag" });
-db.tag.belongsTo(db.tutorial, {
-  foreignKey: "tutorialId",
+db.tag.belongsToMany(db.tutorial, {
+  through: "tutorial_tag",
   as: "tutorial",
+  foreignKey: "tagId",
+});
+
+db.tutorial.belongsToMany(db.tag, {
+  through: "tutorial_tag",
+  as: "tag",
+  foreignKey: "tutorialId",
 });
 
 module.exports = db
