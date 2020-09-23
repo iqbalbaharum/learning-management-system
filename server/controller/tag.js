@@ -1,9 +1,6 @@
 
 import Model from '../models'
 
-const Tutorial = Model.tutorial;
-const Tag = Model.tag;
-
 export default {
 
 	async index (req, res) {
