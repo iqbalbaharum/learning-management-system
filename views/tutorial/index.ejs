@@ -16,6 +16,7 @@
         <% } %>
     </div>
 
+    <!-- Table -->
     <section>
       <div class="container">
               <div class="row align-items-center">
@@ -27,14 +28,17 @@
                           <tr>
                             <th>TITLE</th>
                             <th>DESCRIPTION</th>
-                            <th>VIEW</th>
+                            <th>ACTIONS</th>
                             <th>DELETE</th>
                           </tr>
                           <% for(var x=0; x < tutorial.length; x++ ){ %>
                             <tr>
                                 <td><%= tutorial[x].title%></td>
                                 <td><%= tutorial[x].description%> </td>
-                                <td><a href="#" onclick="return false;" class="mr-2 open-AddTutorialDialog" data-id=" <%= tutorial[x].id %>" data-title="<%= tutorial[x].title %>" data-description="<%= tutorial[x].description %>" >Update</a></td>
+                                <td>
+                                  <a href="#" onclick="return false;" class="mr-2 open-AddTutorialDialog" data-id=" <%= tutorial[x].id %>" data-title="<%= tutorial[x].title %>" data-description="<%= tutorial[x].description %>" >Update</a>
+                                  <a href="#" id="assignButton" onclick="return false;" data-id=" <%= tutorial[x].id %>">Assign</a>
+                                </td>
                                 <td><a href="/tutorial/delete/<%= tutorial[x].id %>"  data-confirm="Are you sure you want to delete ?">Delete</a></td>
                             </tr>
                           <% } %>
@@ -44,6 +48,7 @@
         </div>
 
     </section>
+    <!-- End Table -->
 
     <!-- New Tutorial Modal -->
     <div class="modal fade" id="newTutorial" tabindex="-1" aria-labelledby="newTutorialLabel" aria-hidden="true">
@@ -122,15 +127,15 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/tutorial/assign" method="POST">
+      <form action="/tag/assign" method="POST">
         <div class="modal-body">
           <div class="form-group">
             <input type="hidden" id="modalTutorialId" name="id"/>
             <label>Tag</label>
             <select class="custom-select" name="TagId">
               <option selected>Open this select menu</option>
-              <% for(var x = 0; x < tutorial.length; x++ ) { %>
-                <option value="<%= tutorial[x].id %>"><%= tutorial[x].name %></option>
+              <% for(var x = 0; x < tag.length; x++ ) { %>
+                <option value="<%= tag[x].id %>"><%= tag[x].name %></option>
               <% } %>
             </select>
           </div>
@@ -165,10 +170,10 @@
     </script>
 
     <script>
-      $('#newTutorialLabel').on('click', function(e) {
+      $('#assignButton').on('click', function(e) {
 
         // copy data from data-id and pass it to form
-        const id = $('#newTutorialLabel').data('id')
+        const id = $('#assignButton').data('id')
         $('#modalTutorialId').val(id)
 
         // modal opening
