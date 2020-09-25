@@ -8,18 +8,20 @@ export default {
         const project = await Model.Project.findAll()
 		res.render('journal/index', {
             session: req.session,
-            journals: journals ,
+            journals: journals,
             project: project
 		})
 	},
 
 	async newJournal(req, res) {
 		await Model.Journal.create({
+            /* content, title and etc tu kena ikut nama
+               attribute dlm table. kalau tak nanti, data tak masuk */
 			content: req.body.content,
 			title: req.body.title,
             teamMember: req.body.team,
-            project: req.body.project
-		})
+            projID: req.body.project
+        })
 
 		res.redirect('/journal')
 	},
