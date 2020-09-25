@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             references: {
                 model: 'Project',
-                key: 'id',
+                key: 'projID',
                 as: 'projects'
             }
         }
@@ -21,11 +21,18 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Journal.associate = function(models) {
-        Journal.belongsTo(Project, { foreignKey: 'projID' })
+        Journal.belongsTo(models.Project, { 
+            foreignKey: 'projID' 
+        })
     }
 
     Journal.sync({ alter: true });
     console.log("The table for the Journal model was just (re)created!");
+
+    // Project.hasMany(Journal, {
+	// 	foreignKey: 'clubId'
+	// });
+    // Journal.belongsTo(Project);
 
     return Journal;
 };

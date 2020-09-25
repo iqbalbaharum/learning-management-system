@@ -4,10 +4,19 @@ import Model from '../models'
 export default {
     
     async index(req, res) {
-        const student = await Model.Student.findAll()
+        
+        const student = await Model.Student.findAll({ 
+            include: [{
+                model: Model.Subject,
+                as: 'subjects'
+            }] 
+        })
+        const subject = await Model.Subject.findAll()
+
         res.render ('student', {
             session: req.session,
-            student: student        
+            student: student,
+            subject: subject      
         })
     },
 
@@ -19,15 +28,14 @@ export default {
 		})
 
 		res.redirect('/student')
-	},
+    },
+    
+    async assignStudentToSubject (req, res) {
+        await Model.StudentSubject.create ({
+            studentId: req.body.id,
+            subjectId: req.body.subjectId
+        })
 
-	async deleteStudent(req, res) {
-		await Model.Student.destroy({
-			where: {
-				id: req.params.id
-			}	
-		})
-
-		res.redirect('/student')
-	},
+        res.redirect('/student')
+    }
 }

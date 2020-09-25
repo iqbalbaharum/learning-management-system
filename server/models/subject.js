@@ -1,15 +1,18 @@
 
 /* 1 subject has many students */
-import Model from '../models'
-Student = Model.Student
 module.exports = (sequelize, DataTypes) => {
     const Subject = sequelize.define('Subject', {
         name: DataTypes.STRING
     });
 
-    Subject.belongsToMany(Student, { 
-        through: 'subjectStudent' 
-    })
+    Subject.associate = function(models) {
+        Subject.belongsToMany(models.Student, {
+            through: models.StudentSubject,
+            /* Tak faham sangat part ni */
+            foreignKey: 'subjectId',
+            as: 'students'
+        })
+    }
 
     return Subject;
 };

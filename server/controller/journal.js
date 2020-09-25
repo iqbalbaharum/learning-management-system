@@ -4,10 +4,12 @@ import Model from '../models'
 export default {
 
 	async index (req, res) {
-		const journals = await Model.Journal.findAll()
+        const journals = await Model.Journal.findAll()
+        const project = await Model.Project.findAll()
 		res.render('journal/index', {
-				session: req.session,
-				journals: journals 
+            session: req.session,
+            journals: journals ,
+            project: project
 		})
 	},
 
@@ -15,7 +17,8 @@ export default {
 		await Model.Journal.create({
 			content: req.body.content,
 			title: req.body.title,
-			teamMember: req.body.team
+            teamMember: req.body.team,
+            project: req.body.project
 		})
 
 		res.redirect('/journal')
@@ -46,7 +49,8 @@ export default {
 		await Model.Journal.update({
 			content: req.body.content,
 			title: req.body.title,
-			teamMember: req.body.team
+            teamMember: req.body.team,
+            project: req.body.project
 		}, {
 			where: {
 				id: req.body.id

@@ -9,4 +9,7 @@ Router.route('/')
     .get(studentController.index)
     .post(studentController.newStudent)
 
+Router.route('/assign')
+    .post(studentController.assignStudentToSubject)
+
 module.exports = Router

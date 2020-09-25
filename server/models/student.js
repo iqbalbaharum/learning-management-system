@@ -1,6 +1,5 @@
 
-import Model from '../models'
-Subject = Model.Subject
+
 module.exports = (sequelize, DataTypes) => {
     const Student = sequelize.define('Student', {
         name: DataTypes.STRING,
@@ -8,9 +7,13 @@ module.exports = (sequelize, DataTypes) => {
         gender: DataTypes.STRING
     });
 
-    Subject.belongsToMany(Student, { 
-        through: 'subjectStudent' 
-    })
-
+    Student.associate = function(models) {
+        Student.belongsToMany(models.Subject, {
+            through: models.StudentSubject,
+            foreignKey: 'studentId',
+            as: 'subjects'
+        })
+    }
+    
     return Student;
 };
