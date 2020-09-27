@@ -1,3 +1,5 @@
+
+
 import Model from '../models'
 
 export default {
@@ -12,30 +14,6 @@ export default {
             project: project,
             totalElem: totalElem
         })
-
-        // let students = []
-		// 	let subjects = []
-
-		// 	try {
-		// 		students = await Model.Student.findAll({ 
-		// 			include: [{
-		// 				model: Model.Subject,
-		// 				as: 'subjects'
-		// 			}]
-		// 		})
-		// 		subjects = await Model.Subject.findAll()
-		// 	} catch(e) {
-		// 		console.log(e)
-		// 	}
-
-		// 	console.log(students)
-
-
-		// 	res.render('student', {
-		// 		session: req.session,
-		// 		students: students,
-		// 		subjects: subjects
-		// 	})
     },
 
     async newProject (req, res) {

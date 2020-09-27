@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
         /* Enforcing the table name to be equal to the model name */
         freezeTableName: true
     });
+    /* I put this to remove id attribute because there 
+       will be an error saying cannot have two PK in a 
+       table even though I have declared projID as the PK */
     Project.removeAttribute('id');
 
     Project.associate = function(models) {
@@ -26,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
         Journal.belongsTo(Project);
     }
 
+    /* This line is to sync the project table in database
+       which means if we add new attributes in this project
+       model, it will automatically update project table in
+       database  */
     Project.sync({ alter: true });
     console.log("The table for the Project model was just (re)created!");
 
