@@ -10,7 +10,7 @@
     <section>
       <div class="container">
         <input class="form-control form-control-lg h-100 mb-2 mb-md-0 mr-md-3" name="help-search" placeholder="Search" type="search"
-        id="myInput" onkeyup="myFunction()">
+        id="myInput" onkeyup="myNotesSearch()">
         <br>
 				<div class="row mb-5">
   					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newNotes">New Note</a>
@@ -125,6 +125,8 @@
        $('#updateNotes').modal('show');
     });
 
+
+//Function to pop up delete modal for confirmation of deleting notes
   $(document).ready(function() {
 	$('a[data-confirm]').click(function(ev) {
 		var href = $(this).attr('href');
@@ -138,7 +140,8 @@
 	});
 });
 
-function myFunction() {
+//Function for Notes Searching
+function myNotesSearch() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -157,7 +160,7 @@ function myFunction() {
     }
   }
 
-
+//Function to clear the content of new notes when not creating new notes
 
   $('#newNotes').on('hidden.bs.modal', function () {
     $(this).find("input,textarea,select").val('');
