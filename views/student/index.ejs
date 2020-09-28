@@ -13,23 +13,21 @@
         id="myInput" onkeyup="myFunction()">
         <br>
 				<div class="row mb-5">
-  					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newNotes">New Note</a>
+  					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newStudent">New Student</a>
 				</div>
         <div class="row">
           <table id="myTable">
             <tr class="header">
-              <th style="width:25%;">Course</th>
-              <th style="width:45%;">Topic</th>
-              <th style="width:20%;">Content</th>
-              <th style="width:10%;">Delete</th>
+              <th style="width:25%;">Name</th>
+              <th style="width:45%;">Lecture</th>
+              <th style="width:30%;">Delete</th>
 
-          <% for(var i = 0; i < notes.length; i++ ) { %>
+          <% for(var i = 0; i < student.length; i++ ) { %>
               <tr>
-                <td><%= notes[i].course %></td>
-                <td><%= notes[i].topic %></td>
-                <td><a href="#" onclick="return false;" class="mr-2 open-AddBookDialog" data-id="<%= notes[i].id %>" 
-                  data-course="<%= notes[i].course %>" data-topic="<%= notes[i].topic %>" data-content="<%= notes[i].content %>">View / Edit</a></td>
-                <td><a href="/notes/delete/<%= notes[i].id %>" data-confirm="Are you sure you want to delete ?">Delete</a></td>
+                <td><%= student[i].name %></td>
+                <!-- <td><%= student[i].topic %></td> -->
+                <td><a href="#" onclick="return false;" class="mr-2 open-AddBookDialog1" data-id="<%= student[i].id %>">Enroll</a></td>
+                <td><a href="/student/delete/<%= student[i].id %>" data-confirm="Are you sure you want to delete ?">Delete</a></td>
               </tr>
           <% } %>
         </table>
@@ -37,18 +35,18 @@
       </div>
     </section>
     
-    <div class="modal fade" id="updateNotes" tabindex="-1" role="dialog" aria-labelledby="updateNotesLabel" aria-hidden="true">
+    <div class="modal fade" id="updateStudent" tabindex="-1" role="dialog" aria-labelledby="updateStudentLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="updateNotesLabel">Notes Entry</h5>
+            <h5 class="modal-title" id="updateStudentLabel">Student Entry</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="/notes/update" method="POST">
+          <form action="/student/update" method="POST">
             <div class="modal-body">
-              <input type="hidden" name="id" id="NotesID" value=""/>
+              <input type="hidden" name="id" id="StudentID" value=""/>
               <div class="form-group">
                 <label>Course</label>
                 <input class="form-control" id="course" name="course">
@@ -71,29 +69,21 @@
       </div>
     </div>    
    
-    <div class="modal fade" id="newNotes" tabindex="-1" aria-labelledby="newNotesLabel" aria-hidden="true">
+    <div class="modal fade" id="newStudent" tabindex="-1" aria-labelledby="newStudentLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="newNotesLabel">Notes Entry</h5>
+            <h5 class="modal-title" id="newStudentLabel">Student Entry</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="/notes" method="POST">
+          <form action="/student" method="POST">
             <div class="modal-body">
 
               <div class="form-group">
-                <label>Course</label>
-                <input class="form-control" name="course"/>
-              </div>
-              <div class="form-group">
-                <label>Topic</label>
-                <input class="form-control" name="topic"/>
-              </div>
-              <div class="form-group">
-                <label>Content</label>
-                <textarea class="form-control" rows="3" name="content"></textarea>
+                <label>Name</label>
+                <input class="form-control" name="name"/>
               </div>
             </div>
             <div class="modal-footer">
@@ -104,25 +94,69 @@
         </div>
       </div>
     </div>
+
+    <!-- Many to many relationship Student Modal -->
+<div class="modal fade" id="assignStudent" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Student To Notes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/notes/assign" method="POST">
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="hidden" id="modalStudentId" value=""/>
+            <label>Notes</label>
+            <select class="custom-select" name="NotesId">
+              <option selected>Open this select menu</option>
+              <% for(var x = 0; x < notes.length; x++ ) { %>
+                <option value="<%= notes[x].id %>"><%= notes[x].course %></option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="submit">Enroll</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End many to many relationship Student Modal -->
     
 		<%- include('../components/footer') %>
     <%- include('../components/script') %>
 </body>
 
 <script>
-  
-  $(document).on("click", ".open-AddBookDialog", function () {
-       var NotesID = $(this).data('id');
-       var course = $(this).data('course');
-       var topic = $(this).data('topic');
-       var content = $(this).data('content');
-       $("#NotesID").val( NotesID );
-       $("#course").val( course );
-       $("#topic").val( topic );
-       $("#content").val( content );
+
+$(document).on("click", ".open-AddBookDialog1", function () {
+       var id = $(this).data('id');
+
+       $("#modalStudentId").val( id );
+
        // As pointed out in comments, 
        // it is unnecessary to have to manually call the modal.
-       $('#updateNotes').modal('show');
+       $('#assignStudent').modal('show');
+
+       e.preventDefault()
+    });
+</script>
+
+<script>
+  
+  $(document).on("click", ".open-AddBookDialog", function () {
+       var studentID = $(this).data('id');
+
+       $("#studentID").val( studentID );
+
+       // As pointed out in comments, 
+       // it is unnecessary to have to manually call the modal.
+       $('#updateStudent').modal('show');
     });
 
   $(document).ready(function() {

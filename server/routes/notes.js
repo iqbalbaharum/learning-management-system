@@ -11,4 +11,7 @@ Router.route('/delete/:id')
 Router.route('/update')
     .post(notesController.updateNotes)
 
+Router.route('/assign')
+    .post(notesController.assignNotes)
+
 module.exports = Router

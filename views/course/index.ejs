@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Free Software/Coding Academy</title>
+    <%- include('../components/style') %>
+  </head>
+
+  <body>
+    <%- include('../components/nav', { session: session }) %>
+    <div class="container">
+
+        <% if (session.isLoggedIn == true) { %>
+          <div class="d-flex justify-content-left">
+            <button type="button" class="btn btn-primary btn-dark " data-toggle="modal" data-target="#newCourse">Course Registration</button>
+          </div>
+        <% } %>
+    </div>
+
+    <section>
+      <div class="container">
+              <div class="row align-items-center">
+                <table class="table" style="width:100%">
+                    <thead class="thead-dark">
+                          <div class="card-header text-center" style="width: 100rem;">
+                            COURSE REGISTRATION PERIOD
+                          </div>
+                          <tr>
+                            <th>CATEGORIES</th>
+                            <th>TRAINING MODE</th>
+                            <th>COURSES</th>
+                            <th>VIEW</th>
+                            <th>DELETE</th>
+                          </tr>
+                        <% for(var x=0; x < course.length; x++ ){ %>
+                            <tr>
+                                <td><%= course[x].level%></td>
+                                <td><%= course[x].class%> </td>
+                                <td><%= course[x].faculty%> </td>
+                                <td><a href="#" onclick="return false;" class="mr-2 open-AddCourseDialog" data-id=" <%= course[x].id %>" data-level="<%= course[x].level %>" data-class2="<%= course[x].class %>" data-faculty="<%= course[x].faculty %>">Update</a></td>
+                                <td><a href="/course/delete/<%= course[x].id %>"  data-confirm="Are you sure you want to delete ?">Delete</a></td>
+                            </tr>
+                        <% } %>
+                      </thead>
+                  </table>
+              </div>
+        </div>
+
+    </section>
+
+ <!-- New COurse Modal -->
+    <div class="modal fade" id="newCourse" tabindex="-1" aria-labelledby="newCourseLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newCourseLabel">Course Registration</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/course" method="POST">
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Categories</label>
+                <input type="text" class="form-control" name="level">
+              </div>
+              <div class="form-group">
+                <label>Training Mode</label>
+                <input class="form-control" name="class"/>
+              </div>
+              <div class="form-group">
+                <label>Courses</label>
+                <input class="form-control" name="faculty"/>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+ <!-- End Course Modal -->
+
+  <!-- Update Course Modal -->
+  <div class="modal fade" id="updateCourse" tabindex="-1" aria-labelledby="updateCourseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="updateCourseLabel">Course Registration</h5>
+
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+                <form action="/course/update" method="POST">
+                    <div class="modal-body">
+                      <input type="text" name="id" id="courseId" value="">
+                      <div class="form-group">
+                        <label>Categories</label>
+                        <input type="text" class="form-control" id="level" name="level"></input>
+                      </div>
+                      <div class="form-group">
+                        <label>Training Mode</label>
+                        <input class="form-control" id="class2" name="class"></input>
+                      </div>
+                      <div class="form-group">
+                        <label>Courses</label>
+                        <input class="form-control" id="faculty" name="faculty"></input>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                    </div>
+                </form>
+
+          </div>
+        </div>
+</div>
+<!-- End Update Course Modal -->
+
+    <%- include('../components/footer') %>
+    <%- include('../components/script') %>
+
+    <script>
+          $(document).on("click", ".open-AddCourseDialog", function () {
+          var courseId = $(this).data('id');
+          var level = $(this).data('level');
+          var class2 = $(this).data('class2');
+          var faculty = $(this).data('faculty');
+          $(".modal-body #courseId").val( courseId );
+          $(".modal-body #level").val( level );
+          $(".modal-body #class2").val( class2 );
+          $(".modal-body #faculty").val( faculty );
+           // As pointed out in comments,
+           // it is unnecessary to have to manually call the modal.
+           $('#updateCourse').modal('show');
+         });
+         
+    </script>
+  </body>
+
+</html>

@@ -7,7 +7,7 @@ export default {
 		const notes = await Model.Notes.findAll()
 		res.render('notes/index', {
 				session: req.session,
-				notes: notes 
+				notes: notes
 		})
 	},
 
@@ -45,6 +45,19 @@ export default {
 
 		});
 		res.redirect('/notes')
-	}
+	},
 
+	async assignNotes(req, res){
+		console.log(req.body)
+		await Model.Notes.update({
+			course: req.body.course,
+			topic: req.body.topic,
+			content: req.body.content
+		},{
+				where: {
+					id: req.body.id
+				}
+			});
+			res.redirect('/notes')
+		}
 }

@@ -23,4 +23,20 @@ Fs.readdirSync(__dirname)
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+
+db.notes = require("./notes.js")(sequelize, Sequelize);
+db.student = require("./student.js")(sequelize, Sequelize);
+
+db.student.belongsToMany(db.notes, {
+  through: "notes_student",
+  as: "notes",
+  foreignKey: "studentId",
+});
+
+db.notes.belongsToMany(db.student, {
+  through: "notes_student",
+  as: "student",
+  foreignKey: "notesId",
+});
+
 module.exports = db

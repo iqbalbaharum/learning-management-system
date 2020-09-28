@@ -3,7 +3,7 @@ require("dotenv").config({ silent: true });
 module.exports = {
     port: process.env.PORT || 3000,
     env: process.env.NODE_ENV || "development",
-  
+
     // Environment-dependent settings
     development: {
       db: {
@@ -12,7 +12,7 @@ module.exports = {
         username: 'root',
         password: 'root',
         port: 3306,
-        database: 'lms'
+        database: 'lmsTEST'
       }
     },
     production: {
@@ -22,7 +22,7 @@ module.exports = {
         username: 'root',
         password: 'root',
         port: 3306,
-        database: 'lms'
+        database: 'lmsTEST'
       }
     }
   };
