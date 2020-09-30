@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
 	Tutorial.associate = function(models) {
 		Tutorial.belongsToMany(models.Tag, {
-			through: models.tutorial_tag,
+			through: models.TutorialTag,
 			foreignKey: 'tutorialId',
 			as: 'tags'
 		})
