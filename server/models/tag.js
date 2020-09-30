@@ -1,7 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-	const Tag = sequelize.define('Tag', {
+	let Tag = sequelize.define('Tag', {
 		name: DataTypes.STRING
 	});
 
+	Tag.associate = function(models) {
+		Tag.belongsToMany(models.Tutorial, {
+			through: models.tutorial_tag,
+			foreignKey: 'tagId',
+			as: 'tutorials'
+		})
+	}
 	return Tag;
 };
