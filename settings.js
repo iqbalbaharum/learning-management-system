@@ -10,7 +10,7 @@ module.exports = {
         dialect: "mysql",
         host: 'localhost',
         username: 'root',
-        password: '',
+        password: 'root',
         port: 3306,
         database: 'lms'
       }
@@ -20,7 +20,7 @@ module.exports = {
         dialect: "mysql",
         host: 'localhost',
         username: 'root',
-        password: '',
+        password: 'root',
         port: 3306,
         database: 'lms'
       }
